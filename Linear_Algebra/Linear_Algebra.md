@@ -854,6 +854,39 @@ k_1\boldsymbol{\alpha}_1+k_2\boldsymbol{\alpha}_2+\cdots+k_m\boldsymbol{\alpha}_
 $$
 则称向量组$A$线性相关，否则称向量组$A$线性无关($k_1=k_2=\cdots=k_m=0$)
 
+---  
+结合定义4可以发现，当向量组$A: \boldsymbol{\alpha}_1,\boldsymbol{\alpha}_2,\cdots,\boldsymbol{\alpha}_m$线性相关时，存在至少一个向量的系数$k \ne 0$  
+$$
+k_1\boldsymbol{\alpha}_1+\cdots+k_i\boldsymbol{\alpha}_i+\cdots+k_m\boldsymbol{\alpha}_m = \boldsymbol{0}
+$$
+$$
+\boldsymbol{\alpha}_i = \frac{-1}{k_i}(k_1\boldsymbol{\alpha}_1+k_2\boldsymbol{\alpha}_2+\cdots+k_m\boldsymbol{\alpha}_m)
+$$
+即，有$\lambda_1,\lambda_2,\cdots,\lambda_{m-1}$使得
+$$
+\boldsymbol{\alpha}_i = \lambda_1\boldsymbol{\alpha}_1+\cdots+\lambda_i\boldsymbol{\alpha}_{i+1}+\cdots+\lambda_{m-1}\boldsymbol{\alpha}_m
+$$
+这样就把线性相关和方程组联系在了一起，当方程组$\boldsymbol{Ax} = \boldsymbol{b}$或$\boldsymbol{Ax} = \boldsymbol{0}$时，$\boldsymbol{x}$有非零解的充分必要条件只需要对应的参数矩阵$\boldsymbol{A},(\boldsymbol{A,b})$线性相关
+
+### 定理4 由$m$个$n$维向量构成的向量组$A: \alpha_1, \alpha_2, \cdots, \alpha_m$线性相关的充分必要条件时她所构成的矩阵$\boldsymbol{A} = (\boldsymbol{\alpha_1},\boldsymbol{\alpha_2},\cdots,\boldsymbol{\alpha_m})$的秩$R(\boldsymbol{A}) \le m$；向量组$A$线性无关的充分必要条件是$R(\boldsymbol{A}) = m$
+
+### 定理5
+### (1) 若向量组 $A: \boldsymbol{\alpha_1},\boldsymbol{\alpha_2},\cdots,\boldsymbol{\alpha_m}$ 线性相关，则向量组 $B: \boldsymbol{\alpha_1},\boldsymbol{\alpha_2},\cdots,\boldsymbol{\alpha_m},\boldsymbol{\alpha_{m+1}}$ 也线性相关；反之，若 $B$ 线性无关，$A$ 也线性无关
+### (2) $m$ 个 $n$ 维向量组成的向量组，当维数 $n$ 小于向量个数 $m$ 时一定线性相关，特别的$n+1$个$n$维向量一定线性相关
+### (3) 设向量组 $A: \alpha_1, \alpha_2, \cdots, \alpha_m$ 线性无关，而向量组 $B: \alpha_1, \alpha_2, \cdots, \alpha_m, b$ 线性相关，则向量 $b$ 一定能用向量组$A$来线性表示，且表达式唯一
+
+## 3、向量组的秩
+在这节往后，开始讨论含有无限多个向量的向量组
+### 定义5 设有向量组$A$ ，如果在 $A$ 中能选出 $r$ 个向量 $\boldsymbol{\alpha_1},\boldsymbol{\alpha_2},\cdots,\boldsymbol{\alpha_r}$，满足
+* 向量组 $A_0: \boldsymbol{\alpha_1},\boldsymbol{\alpha_2},\cdots,\boldsymbol{\alpha_r}$ 线性无关；
+* 向量组 $A$ 中任意 $r+1$ 个向量(如果有)都线性相关；
+### 那么称向量组 $A_0$ 是向量组 $A$ 的一个最大线性无关向量组(简称最大无关组)，最大无关组所含的向量个数 $r$ 称为向量组 $A$ 的秩，记作 $R_A$ ，特别的，规定零向量的秩为 $0$
+
+### 推论(最大线性无关组的等价定义) 设向量组 $A_0: \boldsymbol{\alpha_1},\boldsymbol{\alpha_2},\cdots,\boldsymbol{\alpha_r}$ 是向量组 $A$ 的一个部分组，且满足
+* 向量组 $A_0$ 线性无关
+* 向量组 $A$ 的任意一个向量都能由 $A_0$ 线性表示
+### 那么向量组 $A_0$ 便是向量组 $A$ 的一个最大线性无关组
+
 
 
 
