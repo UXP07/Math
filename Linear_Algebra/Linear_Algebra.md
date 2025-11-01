@@ -886,8 +886,151 @@ $$
 * 向量组 $A_0$ 线性无关
 * 向量组 $A$ 的任意一个向量都能由 $A_0$ 线性表示
 ### 那么向量组 $A_0$ 便是向量组 $A$ 的一个最大线性无关组
+对于 $n$ 维向量空间 $\R^n$ 有很多最大线性无关组，任何 $n$ 个线性无关的 $n$ 维向量都是 $\R^n$ 的最大无关组  
 
+### 定理6 矩阵的秩等于它的列向量组的秩，也等于它的行向量组的秩
+如果矩阵 $\boldsymbol{A}_{m \times n}$ 与 $\boldsymbol{B}_{l \times n}$ 的行向量组等价(通过行变换 $A \overset{r}{\sim} B$ )，这时方程 $\boldsymbol{Ax} = \boldsymbol{0}$ 与 $\boldsymbol{Bx} = \boldsymbol{0}$ 同解，所以一般将 $\boldsymbol{A}$ 化为最简形，可以很方便的看出列向量间的线性关系  
+那么为什么$\boldsymbol{Ax} = \boldsymbol{0}$ 与 $\boldsymbol{Bx} = \boldsymbol{0}$ 同解就能够看出线性关系呢，因为可以从代数的角度看待这个问题，实际上 $\boldsymbol{A},\boldsymbol{B}$ 表示同一个方程组，所以同解，如果你把 $x$ 看作 $A$ 的各个列向量间的线性组合的参数，那么显然经过线性变换的矩阵不改变列向量之间的线性关系，也就是  
+$$
+\begin{pmatrix}
+\boldsymbol{a}_1 & \boldsymbol{a}_2 & \cdots & \boldsymbol{a}_m
+\end{pmatrix}
+\begin{pmatrix}
+x_1 \\
+x_2 \\
+\vdots \\
+x_m
+\end{pmatrix} = 
+\begin{pmatrix}
+x_1\boldsymbol{a}_{1} & \cdots & x_m\boldsymbol{a}_{m} 
+\end{pmatrix} = \boldsymbol{0}
+$$
+$$
+\begin{pmatrix}
+\boldsymbol{b}_1 & \boldsymbol{b}_2 & \cdots & \boldsymbol{b}_m
+\end{pmatrix}
+\begin{pmatrix}
+x_1 \\
+x_2 \\
+\vdots \\
+x_m
+\end{pmatrix} = 
+\begin{pmatrix}
+x_1\boldsymbol{b}_{1} & \cdots & x_m\boldsymbol{b}_{m} 
+\end{pmatrix} = \boldsymbol{0}
+$$
+同解，$x$ 不变，所以线性关系不变  
+当然也有更好理解的角度，假设矩阵 $\boldsymbol{A}$ 中，有列向量间的线性关系为
+$$
+\boldsymbol{a}_i = \alpha_1\boldsymbol{a}_{r1}+\cdots+\alpha_r\boldsymbol{a}_{rr}
+$$  
+当矩阵做初等行变换使得 $\boldsymbol{A} \sim \boldsymbol{B}$ 时，即存在可逆矩阵 $\boldsymbol{P}$ 使得 $\boldsymbol{PA} = \boldsymbol{B}$，对于每个列向量而言  
+$$
+\boldsymbol{Pa}_i = \boldsymbol{P}(\alpha_1\boldsymbol{a}_{r1}+\cdots+\alpha_r\boldsymbol{a}_{rr})
+$$
+$$
+\boldsymbol{Pa}_i = \alpha_1\boldsymbol{P}\boldsymbol{a}_{r1}+\cdots+\alpha_r\boldsymbol{P}\boldsymbol{a}_{rr}
+$$
+显然线性关系不变，个人认为第二种证明方法更加直观  
+## 4、线性方程组的解的结构
+在上一章中，已经学习过用矩阵的初等变换解线性方程组，以及为什么可以这样解，为什么初等变换不改变结果。当然还引入了秩的重要概念，通过秩，我们可以很好的判定矩阵的维度，进而判定线性方程组解的情况，由此建立了两个重要的定理
+* $n$ 个未知数的齐次线性方程组 $\boldsymbol{Ax} = \boldsymbol{0}$ 有非零解的充分必要条件时系数矩阵的秩 $R(\boldsymbol{A}) < n$
+* $n$ 个未知数的非齐次线性方程组 $\boldsymbol{Ax} = \boldsymbol{b}$ 有解的充分必要条件是 $R(\boldsymbol{A}) = R((\boldsymbol{A,b}))$，当 $R(\boldsymbol{A}) = R((\boldsymbol{A,b})) = n$ 时有惟一解，当 $R(\boldsymbol{A}) = R((\boldsymbol{A,b})) = r < n$ 时有无限解  
 
+实际上第一个定理，有非零解意味着线性相关，所以 $R(\boldsymbol{A}) < n$  
+第二个定理，当 $R(\boldsymbol{A}) < R((\boldsymbol{A,b}))$ 时说明  $R(\boldsymbol{A}) < R(\boldsymbol{b})$ ，低维无法表示高维；当 $R(\boldsymbol{A}) = R((\boldsymbol{A,b}))$ 时，说明 $R(\boldsymbol{A}) \ge R(\boldsymbol{b})$ 高维可以表示低维；惟一解说明解空间 ( $x$ 的空间) 每个维度都有确切的数值；无限解说明解空间的有些维度没能用上，对于不参与组成 $\boldsymbol{b}$ 的维度当然可以取任意值，也就是产生了自由变量，所以 $x$ 变成了无限解  
+总而言之这两个定理还是非常容易解释的
 
-
+---  
+下面来讨论线性方程组的解  
+先讨论齐次线性方程组的解  
+设有齐次线性方程组  
+$$
+\boldsymbol{Ax} = \boldsymbol{0}
+$$
+解为
+$$
+\boldsymbol{x} = \boldsymbol{\xi} = (\xi_1, \xi_2, \cdots, \xi_n)^T
+$$
+$\boldsymbol{x}$ 为齐次线性方程组的解向量
+### 性质1 若 $\boldsymbol{x} = \boldsymbol{\xi}_1, \boldsymbol{x} = \boldsymbol{\xi}_2$ 为齐次方程组的解，则 $\boldsymbol{x} = \boldsymbol{\xi}_1+\boldsymbol{\xi}_2$ 也是齐次方程组的解
+$$
+\boldsymbol{A}(\boldsymbol{\xi_1+\xi_2}) = \boldsymbol{A\xi_1}+\boldsymbol{A\xi_2} = \boldsymbol{0}
+$$
+### 性质2 若 $\boldsymbol{x} = \boldsymbol{\xi}$ 为齐次方程组的解，设 $k \in \R$，则 $\boldsymbol{x} = k\boldsymbol{\xi}$ 也是齐次方程组的解
+$$
+\boldsymbol{A}(k\boldsymbol{\xi}) = k(\boldsymbol{A\xi}) = k\boldsymbol{0} = \boldsymbol{0}
+$$
+### 基础解系  
+结合性质1和性质2，如果将齐次方程组的所有解的集合记作 $S$，如果能够求得 $S$ 的最大线性无关组 $S_0: \boldsymbol{\xi_1},\boldsymbol{\xi_2},\cdots,\boldsymbol{\xi_l}$，那么显然齐次线性方程组 $\boldsymbol{Ax} = \boldsymbol{0}$ 的通解为  
+$$\begin{gather*}
+\boldsymbol{x} = k_1\boldsymbol{\xi_1}+k_2\boldsymbol{\xi_2}+\cdots+k_l\boldsymbol{\xi_l} & (k_i \in \R)
+\end{gather*}
+$$
+而齐次线性方程组的解集 $S$ 的最大线性无关组 $S_0$ 称为齐次线性方程组的**基础解系**  
+求基础解系，设有齐次线性方程组
+$$
+\boldsymbol{Ax} = \boldsymbol{0}
+$$
+设参数矩阵 $\boldsymbol{A}$ 的秩为 $r$，对 $\boldsymbol{A}$ 进行初等行变换得到行最简形 $\boldsymbol{B}$
+$$
+\boldsymbol{A} \overset{r}{\sim} \boldsymbol{B} = 
+\begin{pmatrix}
+1 & \cdots & 0 & b_{11} & \cdots & b_{1n-r} \\
+\vdots&    & \vdots & \vdots  &   & \vdots  \\
+0 & \cdots & 1 & b_{r1} & \cdots & b_{rn-r} \\
+0 &        &   & \cdots &        & 0        \\
+\vdots&    &   &        &        & \vdots   \\
+0 &        &   & \cdots &        & 0        \\
+\end{pmatrix}
+$$
+则有
+$$
+\begin{pmatrix}
+x_1 \\
+\vdots \\
+x_r \\
+x_{r+1} \\
+x_{r+2} \\
+\vdots \\
+x_n
+\end{pmatrix} = 
+c_1
+\begin{pmatrix}
+-b_{11} \\
+\vdots \\
+-b_{r1} \\
+1 \\
+0 \\
+\vdots \\
+0
+\end{pmatrix}+
+c_2
+\begin{pmatrix}
+-b_{12} \\
+\vdots \\
+-b_{r2} \\
+0 \\
+1 \\
+\vdots \\
+0
+\end{pmatrix}+
+\cdots +
+c_{n-r}
+\begin{pmatrix}
+-b_{1n-r} \\
+\vdots \\
+-b_{rn-r} \\
+0 \\
+0 \\
+\vdots \\
+1
+\end{pmatrix}
+$$
+即
+$$
+\boldsymbol{x} = c_1\boldsymbol{\xi}_1+c_2\boldsymbol{\xi}_2+\cdots+c_{n-r}\boldsymbol{\xi}_{n-r}
+$$
+显然，$\boldsymbol{\xi}_1,\boldsymbol{\xi}_2,\cdots,\boldsymbol{\xi}_{n-r}$是方程组的基础解系  
+### 定理7 设 $m \times n$ 矩阵 $\boldsymbol{A}$ 的秩 $R(\boldsymbol{A}) = r$，则 $n$ 元齐次线性方程组 $\boldsymbol{Ax} = \boldsymbol{0}$ 的解集 $S$ 的秩 $R_s = n-r$
 
