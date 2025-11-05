@@ -1034,3 +1034,120 @@ $$
 显然，$\boldsymbol{\xi}_1,\boldsymbol{\xi}_2,\cdots,\boldsymbol{\xi}_{n-r}$是方程组的基础解系  
 ### 定理7 设 $m \times n$ 矩阵 $\boldsymbol{A}$ 的秩 $R(\boldsymbol{A}) = r$，则 $n$ 元齐次线性方程组 $\boldsymbol{Ax} = \boldsymbol{0}$ 的解集 $S$ 的秩 $R_s = n-r$
 
+上面讨论了齐次线性方程组的通解和基础解系，下面讨论非齐次线性方程组  
+设有非齐次线性方程组
+$$
+\boldsymbol{Ax} = \boldsymbol{b}
+$$
+有以下性质  
+### 性质3 设 $\boldsymbol{x} = \boldsymbol{\eta}_1, \boldsymbol{x} = \boldsymbol{\eta}_2$ 都是非齐次线性方程组(向量方程)的解，则 $\boldsymbol{x} = \boldsymbol{\eta}_1-\boldsymbol{\eta}_2$ 为对应齐次线性方程组 $\boldsymbol{Ax} = \boldsymbol{0}$ 的解
+$$
+\boldsymbol{A}(\boldsymbol{\eta}_1-\boldsymbol{\eta}_2) = \boldsymbol{A}\boldsymbol{\eta}_1-\boldsymbol{A}\boldsymbol{\eta}_2 = \boldsymbol{b}-\boldsymbol{b} = \boldsymbol{0}
+$$
+### 性质4 设 $\boldsymbol{x} = \boldsymbol{\eta}$ 是方程 $\boldsymbol{Ax} = \boldsymbol{b}$ 的解，设 $\boldsymbol{x} = \boldsymbol{\xi}$ 是方程 $\boldsymbol{Ax} = \boldsymbol{0}$ 的解，则方程 $\boldsymbol{x} = \boldsymbol{\xi}+\boldsymbol{\eta}$ 是方程 $\boldsymbol{Ax} = \boldsymbol{b}$ 的解
+$$
+\boldsymbol{A}(\boldsymbol{\xi}+\boldsymbol{\eta}) = \boldsymbol{A}\boldsymbol{\xi}+\boldsymbol{A}\boldsymbol{\eta} = \boldsymbol{0}+\boldsymbol{b} = \boldsymbol{b}
+$$
+也就是说，如果求得方程 $\boldsymbol{Ax} = \boldsymbol{b}$ 的一个解 $\eta^*$ (称为特解)，那么方程 $\boldsymbol{Ax} = \boldsymbol{b}$ 的通解为  
+$$
+\boldsymbol{x} = k_1\boldsymbol{\xi}_1+k_2\boldsymbol{\xi}_2+\cdots+k_{n-r}\boldsymbol{\xi}_{n-r}+\eta^*
+$$
+其中 $\boldsymbol{\xi}_1, \boldsymbol{\xi}_2, \cdots, \boldsymbol{\xi}_{n-r}$ 是方程 $\boldsymbol{Ax} = \boldsymbol{0}$ 的基础解系  
+## 5、向量空间
+### 定义6 设 $V$ 为 $n$ 维向量的集合，如果集合 $V$ 非空，且集合 $V$ 对于向量的加法及数乘两种运算封闭，就称集合 $V$ 为向量空间
+$$
+\boldsymbol{a} \in V,\boldsymbol{b} \in V, \lambda \in \R
+$$
+$$
+\boldsymbol{a}+\boldsymbol{b} \in V, \lambda\boldsymbol{a} \in V
+$$
+
+特殊的，$n$ 元齐次线性方程组的解集
+$$
+S = \{\boldsymbol{x} | \boldsymbol{Ax}=\boldsymbol{0} \}
+$$
+是一个向量空间(称为齐次线性方程组的解空间)
+特殊的，$n$ 元非齐次线性方程组的解集
+$$
+S = \{\boldsymbol{x} | \boldsymbol{Ax}=\boldsymbol{b} \}
+$$
+不是向量空间
+一般的，由向量组 $\boldsymbol{a}_1, \boldsymbol{a}_2, \cdots, \boldsymbol{a}_n$产生的向量空间为
+$$
+L = \{\boldsymbol{x}|\lambda_1\boldsymbol{a}_1+\lambda_2\boldsymbol{a}_2+\cdots+\lambda_n\boldsymbol{a}_n,\lambda_i \in \R \}
+$$
+### 定义7 设有向量空间 $V_1$ 及 $V_2$ ，若 $V_1 \subseteq V_2$，称 $V_1$ 是 $V_2$的一个子空间
+### 定义8 设 $V$ 为向量空间，如果 $r$ 个向量 $\boldsymbol{a}_1,\boldsymbol{a}_2,\cdots,\boldsymbol{a}_r \in V$，且满足
+* $\boldsymbol{a}_1,\boldsymbol{a}_2,\cdots,\boldsymbol{a}_r$ 线性无关
+* $V$ 中任一向量都可由 $\boldsymbol{a}_1,\boldsymbol{a}_2,\cdots,\boldsymbol{a}_r$ 线性表示
+### 则，向量组 $\boldsymbol{a}_1,\boldsymbol{a}_2,\cdots,\boldsymbol{a}_r$ 称为向量空间 $V$ 的一个基，$r$ 称为向量空间 $V$ 的维数，并称 $V$ 为 $r$ 维向量空间  
+若把向量空间 $V$ 看作向量组，则由最大无关组的等价定义可知， $V$ 的基就是向量组的最大无关组， $V$ 的维数就是向量组的秩  
+若向量组 $\boldsymbol{a}_1,\boldsymbol{a}_2,\cdots,\boldsymbol{a}_r$ 是向量空间 $V$ 的一个基，则 $V$ 可以表示为
+$$
+V = \{\boldsymbol{x}|\lambda_1\boldsymbol{a}_1+\lambda_2\boldsymbol{a}_2+\cdots+\lambda_r\boldsymbol{a}_r,\lambda_i \in \R \}
+$$
+### 定义9 如果在向量空间 $V$ 中取定一个基 $\boldsymbol{a}_1,\boldsymbol{a}_2,\cdots,\boldsymbol{a}_r$ ，那么 $V$ 中任意一个向量 $\boldsymbol{x}$ 可惟一地表示为
+$$
+\boldsymbol{x} = \lambda_1\boldsymbol{a}_1+\lambda_2\boldsymbol{a}_2+\cdots+\lambda_r\boldsymbol{a}_r
+$$
+数组 $\lambda_1, \lambda_2, \cdots, \lambda_r$ 称为向量 $x$ 在基 $\boldsymbol{a}_1,\boldsymbol{a}_2,\cdots,\boldsymbol{a}_r$ 中的坐标  
+特别的，在 $n$ 维向量空间 $\R$ 中取单位坐标向量组 $\boldsymbol{e}_1,\boldsymbol{e}_2,\cdots,\boldsymbol{e}_r$ ，则可以用 $x$ 的各个分量表示坐标，$\boldsymbol{e}_1,\boldsymbol{e}_2,\cdots,\boldsymbol{e}_r$ 也叫做 $\R$ 中的自然基  
+### 基变换公式
+在 $\R^3$ 中取定一个旧基 $\boldsymbol{a}_1,\boldsymbol{a}_2,\boldsymbol{a}_3$，再取一个新基 $\boldsymbol{b}_1,\boldsymbol{b}_2,\boldsymbol{b}_3$ ，则  
+$$
+\boldsymbol{A} = (\boldsymbol{a}_1, \boldsymbol{a}_2, \boldsymbol{a}_3) = (\boldsymbol{e}_1, \boldsymbol{e}_2, \boldsymbol{e}_3)\boldsymbol{A}
+$$
+$$
+(\boldsymbol{e}_1, \boldsymbol{e}_2, \boldsymbol{e}_3) = (\boldsymbol{a}_1, \boldsymbol{a}_2, \boldsymbol{a}_3)\boldsymbol{A}^{-1}
+$$
+$$
+\boldsymbol{B} = (\boldsymbol{e}_1, \boldsymbol{e}_2, \boldsymbol{e}_3)\boldsymbol{B} = 
+(\boldsymbol{a}_1, \boldsymbol{a}_2, \boldsymbol{a}_3)\boldsymbol{A}^{-1}\boldsymbol{B}
+$$
+则存在 $\boldsymbol{P} = \boldsymbol{A}^{-1}\boldsymbol{B}$ 使得
+$$
+(\boldsymbol{b}_1, \boldsymbol{b}_2, \boldsymbol{b}_3) = 
+(\boldsymbol{a}_1, \boldsymbol{a}_2, \boldsymbol{a}_3)\boldsymbol{P}
+$$
+### 坐标变换公式
+在 $\R^3$ 中取定一个旧基 $\boldsymbol{a}_1,\boldsymbol{a}_2,\boldsymbol{a}_3$，再取一个新基 $\boldsymbol{b}_1,\boldsymbol{b}_2,\boldsymbol{b}_3$ ，设向量 $x$ 在旧基中的坐标为 $(x_1, x_2, x_3)$，在新基中的坐标为 $(y_1, y_2, y_3)$，则有  
+$$
+(\boldsymbol{a}_1,\boldsymbol{a}_2,\boldsymbol{a}_3)
+\begin{pmatrix}
+x_1 \\
+x_2 \\
+x_3
+\end{pmatrix} = 
+(\boldsymbol{b}_1,\boldsymbol{b}_2,\boldsymbol{b}_3)
+\begin{pmatrix}
+y_1 \\
+y_2 \\
+y_3
+\end{pmatrix}
+$$
+$$
+\begin{pmatrix}
+y_1 \\
+y_2 \\
+y_3
+\end{pmatrix} = 
+\boldsymbol{B}^{-1}\boldsymbol{A}
+\begin{pmatrix}
+x_1 \\
+x_2 \\
+x_3
+\end{pmatrix}
+$$
+$$
+\begin{pmatrix}
+y_1 \\
+y_2 \\
+y_3
+\end{pmatrix} = 
+\boldsymbol{P}^{-1}
+\begin{pmatrix}
+x_1 \\
+x_2 \\
+x_3
+\end{pmatrix}
+$$
