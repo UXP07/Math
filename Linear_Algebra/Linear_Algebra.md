@@ -756,7 +756,7 @@ $$
 ### 推论 若可逆矩阵$\boldsymbol{P},\boldsymbol{Q}$，使得$\boldsymbol{PAQ} = \boldsymbol{B}$，则$R(\boldsymbol{A}) = R(\boldsymbol{B})$  
 不难看出，根据初等矩阵和初等变换的关系，以及初等矩阵的性质2，很容易可以得到推论$\boldsymbol{PAQ} = \boldsymbol{B}$  
 根据定理2和推论，可以得到，矩阵的初等变换作为一种运算，它不改变矩阵的秩
-### 矩阵的秩的性质
+### 矩阵秩的性质
 * $0 \le R(\boldsymbol{A}) \le \min\{m, n\}$
 * $R(\boldsymbol{A}^T) = R(\boldsymbol{A})$
 * 若$\boldsymbol{A} \sim \boldsymbol{B}$，则$R(\boldsymbol{A}) = R(\boldsymbol{B})$
@@ -1151,3 +1151,99 @@ x_2 \\
 x_3
 \end{pmatrix}
 $$
+# 第5章 相似矩阵及二次型
+## 1、向量的内积、长度、正交性
+### 定义1 内积  
+设有 $n$ 维向量
+$$
+\boldsymbol{x} = (x_1, x_2, \cdots, x_n)^T,
+\boldsymbol{y} = (y_1, y_2, \cdots, y_n)^T,
+$$
+令
+$$
+\begin{bmatrix} \boldsymbol{x}, \boldsymbol{y} \end{bmatrix} = x_1y_1+x_2y_2+\cdots+x_ny_n
+$$
+$[\boldsymbol{x}, \boldsymbol{y}]$ 称为 $\boldsymbol{x}$ 与 $\boldsymbol{y}$ 的内积  
+内积是两个向量之间的一种运算，其结果是一个实数，当 $\boldsymbol{x}$ 与 $\boldsymbol{y}$ 都为列向量时，有
+$$
+\begin{bmatrix} \boldsymbol{x}, \boldsymbol{y} \end{bmatrix} = \boldsymbol{x}^T\boldsymbol{y}
+$$
+### 内积具有以下性质
+* $[\boldsymbol{x}, \boldsymbol{y}] = [\boldsymbol{y}, \boldsymbol{x}]$
+* $[\lambda\boldsymbol{x}, \boldsymbol{y}] = \lambda[\boldsymbol{x}, \boldsymbol{y}]$
+* $[\boldsymbol{x+y}, \boldsymbol{z}] = [\boldsymbol{x}, \boldsymbol{z}]+[\boldsymbol{y}, \boldsymbol{z}]$
+* 当 $\boldsymbol{x}=0$ 时，$[\boldsymbol{x}, \boldsymbol{x}]=0$ ，当 $\boldsymbol{x} \ne 0$ 时，$[\boldsymbol{x}, \boldsymbol{x}] > 0$  
+### 施瓦茨(Schwarz)不等式
+$$
+[\boldsymbol{x}, \boldsymbol{y}]^2 \le [\boldsymbol{x}, \boldsymbol{x}][\boldsymbol{y}, \boldsymbol{y}]
+$$
+### 解析几何，向量的数量积
+$$
+\boldsymbol{x} \cdot \boldsymbol{y} = |\boldsymbol{x}||\boldsymbol{y}| \cos{\theta}
+$$
+在直角坐标系中有
+$$
+\boldsymbol{x} \cdot \boldsymbol{y} = (x_1, x_2, \cdots, x_n) \cdot (y_1, y_2, \cdots, y_n) = 
+x_1y_1+x_2y_2+\cdots+x_ny_n
+$$
+$n$ 维向量的内积是数量积的一种推广，但是3维以上向量的长度和夹角并不直观，因此只能按照数量积的坐标公式计算来推广，反过来再利用内积来定义长度和夹角  
+这里还需要强调，不要忘记向量数量积 $(a \cdot b)$ 的几何意义是 $a$ 向量在 $b$ 向量方向上的投影乘 $b$ 向量的模长(向量的长度)
+### 定义2 向量的长度
+$$
+\begin{Vmatrix}
+\boldsymbol{x}
+\end{Vmatrix} = 
+\sqrt{[\boldsymbol{x},\boldsymbol{x}]} = 
+\sqrt{x_1^2+x_2^2+\cdots+x_n^2}
+$$
+$\begin{Vmatrix} \boldsymbol{x} \end{Vmatrix}$ 称作 $n$ 维向量 $x$ 的范数(长度)  
+向量的长度具有以下性质
+* 非负性，当 $\boldsymbol{x} \ne 0$ 时，$\begin{Vmatrix} \boldsymbol{x} \end{Vmatrix} > 0$，当 $\boldsymbol{x} = 0$ 时，$\begin{Vmatrix} \boldsymbol{x} \end{Vmatrix} = 0$  
+* 齐次性 $\begin{Vmatrix} \lambda\boldsymbol{x} \end{Vmatrix} = |\lambda|\begin{Vmatrix} \boldsymbol{x} \end{Vmatrix}$  
+
+当 $\begin{Vmatrix} \boldsymbol{x} \end{Vmatrix} = 1$ 时，称 $\boldsymbol{x}$ 为单位向量，若 $\boldsymbol{a} \ne \boldsymbol{0}$，取单位向量
+$$\boldsymbol{x} = \frac{\boldsymbol{a}}{\begin{Vmatrix} \boldsymbol{a} \end{Vmatrix}}$$
+此过程称为把向量 $\boldsymbol{a}$ 单位化  
+由施瓦茨不等式，有
+$$
+-1 \le \frac{[\boldsymbol{x},\boldsymbol{y}]}{\begin{Vmatrix} \boldsymbol{x} \end{Vmatrix}\begin{Vmatrix} \boldsymbol{y} \end{Vmatrix}} \le 1,
+\begin{Vmatrix} \boldsymbol{x} \end{Vmatrix}\begin{Vmatrix} \boldsymbol{y} \end{Vmatrix} \ne 0
+$$
+于是有向量夹角的定义，当 $\boldsymbol{x} \ne 0, \boldsymbol{y} \ne 0$ 时  
+$$
+\cos\theta = \frac{[\boldsymbol{x},\boldsymbol{y}]}{\begin{Vmatrix} \boldsymbol{x} \end{Vmatrix}\begin{Vmatrix} \boldsymbol{y} \end{Vmatrix}}
+$$
+$$
+\theta = \arccos\frac{[\boldsymbol{x},\boldsymbol{y}]}{\begin{Vmatrix} \boldsymbol{x} \end{Vmatrix}\begin{Vmatrix} \boldsymbol{y} \end{Vmatrix}}
+$$  
+$\theta$ 称为 $n$ 维向量 $x$ 与 $y$ 的夹角  
+当 $[\boldsymbol{x},\boldsymbol{y}] = 0$ 时，称向量 $\boldsymbol{x}$ 与 $\boldsymbol{y}$ 正交，显然，若 $\boldsymbol{x=0}$，则 $\boldsymbol{x}$ 与任何向量都正交  
+正交向量组：一组两两正交的非零向量  
+### 正交向量组的性质
+### 定理1 若 $n$ 维向量 $\boldsymbol{a}_1,\boldsymbol{a}_2,\cdots,\boldsymbol{a}_r$ 是一组两两正交的非零向量，则 $\boldsymbol{a}_1,\boldsymbol{a}_2,\cdots,\boldsymbol{a}_r$ 线性无关  
+设有 $\lambda_1, \lambda_2, \cdots, \lambda_r$ 使得
+$$
+\lambda_1\boldsymbol{a}_1+\lambda_2\boldsymbol{a}_2+\cdots+\lambda_r\boldsymbol{a}_r = 0
+$$
+两边同时与 $\boldsymbol{a}_1$ 做内积  
+$$
+\lambda_1[\boldsymbol{a}_1, \boldsymbol{a}_1] = 0
+$$
+由于 $\boldsymbol{a}_1$ 是非零向量，所以 $\lambda_1 = 0$  
+同理可得 $\lambda_1 = \lambda_2 = \cdots = \lambda_r = 0$  
+即，$\boldsymbol{a}_1,\boldsymbol{a}_2,\cdots,\boldsymbol{a}_r$ 线性无关  
+其实不难想象，如果一组向量两两正交，那么必然每个向量都有自己"独有"的维度，而自己的维度是不能被其他向量所表示的，所以正交向量组一定是线性无关  
+### 定义3 设 $n$ 维向量 $\boldsymbol{e}_1,\boldsymbol{e}_2,\cdots,\boldsymbol{e}_r$ 是向量空间 $V,V \subseteq \R^n$ 的一个基，如果 $\boldsymbol{e}_1,\boldsymbol{e}_2,\cdots,\boldsymbol{e}_r$ 两两正交，且都是单位向量 (模长=1)，则称 $\boldsymbol{e}_1,\boldsymbol{e}_2,\cdots,\boldsymbol{e}_r$ 是 $V$ 的一个标准正交基
+若 $\boldsymbol{e}_1,\boldsymbol{e}_2,\cdots,\boldsymbol{e}_r$ 是 $V$ 的一个标准正交基，那么 $V$ 中任一向量 $\boldsymbol{a}$ 应能由 $\boldsymbol{e}_1,\boldsymbol{e}_2,\cdots,\boldsymbol{e}_r$ 线性表示，即  
+$$
+\boldsymbol{a} = \lambda_1\boldsymbol{e}_1+\lambda_2\boldsymbol{e}_2+\cdots+\lambda_r\boldsymbol{e}_r
+$$
+为了求出系数 $\lambda_i$，我们两边同时乘 $\boldsymbol{e}_i^T$  
+$$
+\boldsymbol{e}_i^T\boldsymbol{a} = \lambda_i\boldsymbol{e}_i^T\boldsymbol{e}_i = \lambda_i
+$$
+$$
+\lambda_i = \boldsymbol{e}_i^T\boldsymbol{a} = [\boldsymbol{a},\boldsymbol{e}_i]
+$$
+通过这个公式，可以方便的求解向量在标准正交基中的**坐标**  
+
