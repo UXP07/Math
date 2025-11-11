@@ -1247,3 +1247,82 @@ $$
 $$
 通过这个公式，可以方便的求解向量在标准正交基中的**坐标**  
 
+### 施密特(Schmidt)正交化  
+设 $\boldsymbol{a}_1, \cdots, \boldsymbol{a}_r$ 是向量空间 $V$ 中的一个基，要求 $V$ 的一个标准正交基，也就是找一组两两正交的单位向量 $\boldsymbol{e}_1,\cdots,\boldsymbol{e}_r$，使得 $\boldsymbol{e}_1,\cdots,\boldsymbol{e}_r$ 与 $\boldsymbol{a}_1, \cdots, \boldsymbol{a}_r$ 等价，这个过程称为，把基 $\boldsymbol{a}_1, \cdots, \boldsymbol{a}_r$ 标准正交化  
+将 $\boldsymbol{a}_1, \cdots, \boldsymbol{a}_r$ 标准正交化，我们可以取  
+$$
+\boldsymbol{b}_1 = \boldsymbol{a}_1
+$$
+$$
+\boldsymbol{b}_2 = \boldsymbol{a}_2-\frac{[\boldsymbol{b}_1, \boldsymbol{a}_2]}{[\boldsymbol{b}_1,\boldsymbol{b}_1]}\boldsymbol{b}_1
+$$
+$$
+\cdots \ \cdots \ \cdots
+$$
+$$
+\boldsymbol{b}_r  = \boldsymbol{a}_r-
+\frac{[\boldsymbol{b}_1, \boldsymbol{a}_r]}{[\boldsymbol{b}_1,\boldsymbol{b}_1]}\boldsymbol{b}_1-
+\frac{[\boldsymbol{b}_2, \boldsymbol{a}_r]}{[\boldsymbol{b}_2,\boldsymbol{b}_2]}\boldsymbol{b}_2-
+\cdots -
+\frac{[\boldsymbol{b}_{r-1}, \boldsymbol{a}_r]}{[\boldsymbol{b}_{r-1},\boldsymbol{b}_{r-1}]}\boldsymbol{b}_{r-1}
+$$
+$$
+\boldsymbol{b}_k = \boldsymbol{a}_k-\sum_{i=1}^{k-1}\frac{[\boldsymbol{b}_i, \boldsymbol{a}_k]}{[\boldsymbol{b}_i,\boldsymbol{b}_i]}\boldsymbol{b}_i
+$$  
+容易验证 $\boldsymbol{b}_1,\cdots,\boldsymbol{b}_r$ 两两正交，且 $\boldsymbol{b}_1,\cdots,\boldsymbol{b}_r$ 与 $\boldsymbol{a}_1, \cdots, \boldsymbol{a}_r$ 等价  
+然后将 $\boldsymbol{b}_1,\cdots,\boldsymbol{b}_r$ 单位化，即取  
+$$
+\boldsymbol{e}_1 = \frac{1}{\begin{Vmatrix} \boldsymbol{b}_1 \end{Vmatrix}}\boldsymbol{b}_1,
+\boldsymbol{e}_2 = \frac{1}{\begin{Vmatrix} \boldsymbol{b}_2 \end{Vmatrix}}\boldsymbol{b}_2,
+\cdots,
+\boldsymbol{e}_r = \frac{1}{\begin{Vmatrix} \boldsymbol{b}_r \end{Vmatrix}}\boldsymbol{b}_r,
+$$
+求得的 $\boldsymbol{e}_1,\cdots,\boldsymbol{e}_r$ 就是 $V$ 的一个标准正交基  
+上述从线性无关向量组  $\boldsymbol{a}_1, \cdots, \boldsymbol{a}_r$ 导出正交向量组  $\boldsymbol{b}_1, \cdots, \boldsymbol{b}_r$ 的过程称为施密特(Schmidt)正交化  
+它不仅满足 $\boldsymbol{b}_1,\cdots,\boldsymbol{b}_r$ 与  $\boldsymbol{a}_1, \cdots, \boldsymbol{a}_r$ 等价，还满足对任何 $k(1 \le k \le r)$，向量组 $\boldsymbol{b}_1,\cdots,\boldsymbol{b}_k$ 与  $\boldsymbol{a}_1, \cdots, \boldsymbol{a}_k$ 等价  
+### 定义4 如果 $n$ 阶矩阵 $\boldsymbol{A}$ 满足  
+$$
+\boldsymbol{A}^T\boldsymbol{A} = \boldsymbol{I} , (\boldsymbol{A}^T = \boldsymbol{A}^{-1})
+$$  
+### 那么称 $\boldsymbol{A}$ 为正交矩阵，简称正交阵  
+不难看出，当  
+$$
+\begin{pmatrix}
+\boldsymbol{a}_1^T \\
+\boldsymbol{a}_2^T \\
+\vdots \\
+\boldsymbol{a}_n^T
+\end{pmatrix}
+\begin{pmatrix}
+\boldsymbol{a}_1
+\boldsymbol{a}_2
+\cdots 
+\boldsymbol{a}_n
+\end{pmatrix} = 
+\boldsymbol{I}
+$$  
+即
+$$
+\boldsymbol{a}_i^T\boldsymbol{a}_j = 
+\begin{cases}
+1 & i=j \\
+0 & i \ne j
+\end{cases}
+$$  
+方阵 $\boldsymbol{A}$ 为正交矩阵的充分必要条件是 $\boldsymbol{A}$ 的列向量都是单位向量，且两两正交  
+因为 $\boldsymbol{A}^T\boldsymbol{A} = \boldsymbol{I}$ 与 $\boldsymbol{A}\boldsymbol{A}^T = \boldsymbol{I}$ 等价，所以上述结论对 $\boldsymbol{A}$ 的行向量依然成立  
+由此可见，$n$ 阶正交矩阵 $\boldsymbol{A}$ 的 $n$ 个列(行)向量构成向量空间 $\R^n$ 的一个标准正交基  
+### 定义5 若 $\boldsymbol{P}$ 为正交矩阵，则线性变换 $\boldsymbol{y} = \boldsymbol{Px}$ 称为正交变换
+$$
+\begin{Vmatrix}
+\boldsymbol{y}
+\end{Vmatrix} = 
+\sqrt{\boldsymbol{y}^T\boldsymbol{y}} = 
+\sqrt{\boldsymbol{x}^T\boldsymbol{P}^T\boldsymbol{P}\boldsymbol{x}} = 
+\sqrt{\boldsymbol{x}^T\boldsymbol{x}} = 
+\begin{Vmatrix}
+\boldsymbol{x}
+\end{Vmatrix}
+$$
+由于 $\begin{Vmatrix} \boldsymbol{y} \end{Vmatrix}$ 表示向量长度，显然在正交变换中，线段的长度保持不变  
+## 2、方阵的特征值与特征向量
