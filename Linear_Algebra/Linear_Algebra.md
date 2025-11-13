@@ -1326,3 +1326,112 @@ $$
 $$
 由于 $\begin{Vmatrix} \boldsymbol{y} \end{Vmatrix}$ 表示向量长度，显然在正交变换中，线段的长度保持不变  
 ## 2、方阵的特征值与特征向量
+### 定义6 设 $\boldsymbol{A}$ 是 $n$ 阶矩阵，如果数 $\lambda$ 和 $n$ 维非零列向量 $x$ 使下面的关系式成立
+$$
+\boldsymbol{Ax} = \lambda\boldsymbol{x}
+$$  
+### 数 $\lambda$ 称为矩阵 $\boldsymbol{A}$ 的特征值，非零向量 $\boldsymbol{x}$ 称为 $\boldsymbol{A}$ 的对应于特征值 $\lambda$ 的特征向量
+上式也可以写成
+$$
+(\boldsymbol{A}-\lambda\boldsymbol{I})\boldsymbol{x} = \boldsymbol{0}
+$$
+这是一个齐次线性方程组，它有非零解的从充分必要条件是系数行列式等于 $0$，即使矩阵 $\boldsymbol{A}-\lambda\boldsymbol{I}$ 的所有列向量线性相关  
+$$
+\begin{vmatrix}
+\boldsymbol{A}-\lambda\boldsymbol{I}
+\end{vmatrix} = 
+0
+$$
+即
+$$
+\begin{vmatrix}
+a_{11}-\lambda & a_{12} & \cdots & a_{1n} \\
+a_{21} & a_{22}-\lambda & \cdots & a_{2n} \\
+\vdots & \vdots & & \vdots \\
+a_{n1} & a_{n2} & \cdots & a_{nn}-\lambda \\
+\end{vmatrix} = 0
+$$
+这个行列式$=0$的式子称为矩阵 $\boldsymbol{A}$ 的特征方程，其左端的 $\begin{vmatrix} \boldsymbol{A}-\lambda\boldsymbol{I} \end{vmatrix}$ 是 $\lambda$ 的 $n$ 次多项式，记作 $f(\lambda)$，称为矩阵 $\boldsymbol{A}$ 的特征多项式  
+显然，$\boldsymbol{A}$ 的特征值就是特征方程的解，特征方程在复数范围内恒有解，其个数为方程的次数(解方程)，因此，$n$ 阶矩阵 $A$ 在复数范围内有 $n$ 个特征值  
+设 $n$ 阶矩阵 $\boldsymbol{A}=(a_{ij})$ 的特征值为 $\lambda_1,\lambda_2,\cdots, \lambda_n$，不难证明：  
+* $\lambda_1+\lambda_2+\cdots+\lambda_n = a_{11}+a_{22}+\cdots+a_{nn}$
+* $\lambda_1\lambda_2\cdots\lambda_n = \begin{vmatrix} \boldsymbol{A} \end{vmatrix} $  
+
+证明：
+因为
+$$
+\begin{vmatrix}
+\boldsymbol{A}-\lambda\boldsymbol{I}
+\end{vmatrix} = 
+\boldsymbol{0}
+$$
+不妨令
+$$
+\begin{vmatrix}
+\lambda\boldsymbol{I}-\boldsymbol{A}
+\end{vmatrix} = \boldsymbol{0}
+$$
+$$
+\begin{vmatrix}
+\lambda\boldsymbol{I}-\boldsymbol{A}
+\end{vmatrix} = 
+(\lambda-\lambda_1)(\lambda-\lambda_2)\cdots(\lambda-\lambda_n)
+$$
+将式子展开
+$$
+\begin{vmatrix}
+\lambda\boldsymbol{I}-\boldsymbol{A}
+\end{vmatrix} = 
+\lambda^n-(\lambda_1+\lambda_2+\cdots+\lambda_n)\lambda^{n-1}+\cdots+(-1)^n(\lambda_1\lambda_2\cdots\lambda_n)
+$$
+对行列式不断地用第一行的第一个元素展开，不难发现
+$$
+\begin{vmatrix}
+\lambda\boldsymbol{I}-\boldsymbol{A}
+\end{vmatrix} = 
+(\lambda-a_{11})(\lambda-a_{22})\cdots(\lambda-a_{nn})+(\lambda-a_{11})(\lambda-a_{22})\cdots(-a_{n-1n}a_{nn-1})+\cdots
+$$
+$$
+\begin{vmatrix}
+\lambda\boldsymbol{I}-\boldsymbol{A}
+\end{vmatrix} = 
+(\lambda-a_{11})(\lambda-a_{22})\cdots(\lambda-a_{nn})+\cdots
+$$
+只有第一项 $(\lambda-a_{11})(\lambda-a_{22})\cdots(\lambda-a_{nn})$ 包含 $n$ 次和 $n-1$次  
+对比系数法  
+对 $\lambda^n$ 的系数而言
+$$
+1 = 1
+$$
+所以有
+$$
+-\sum_{i=1}^n\lambda_i = -\sum_{i=1}^na_{ii}
+$$
+$$
+\lambda_1+\lambda_2+\cdots+\lambda_n = a_{11}+a_{22}+\cdots+a_{nn}
+$$  
+令 $\lambda = 0$，则有  
+$$
+\begin{vmatrix}
+\lambda\boldsymbol{I}-\boldsymbol{A}
+\end{vmatrix} = 
+(-1)^n
+\begin{vmatrix}
+\boldsymbol{A}
+\end{vmatrix} = 
+(-1)^n(\lambda_1\lambda_2\cdots\lambda_n)
+$$
+$$
+\lambda_1\lambda_2\cdots\lambda_n = \begin{vmatrix} \boldsymbol{A} \end{vmatrix} 
+$$
+这里可以知道矩阵 $\boldsymbol{A}$ 可逆的充分必要条件是 $n$ 个特征值全不为 $0$  
+设 $\lambda = \lambda_i$ 为矩阵 $\boldsymbol{A}$ 的一个特征值，则由方程  
+$$
+(\boldsymbol{A}-\lambda_i\boldsymbol{I})\boldsymbol{x} = \boldsymbol{0}
+$$
+可以求得非零解 $\boldsymbol{x=p_i}$，那么 $\boldsymbol{p_i}$ 是 $\boldsymbol{A}$ 的对应于特征值 $\lambda_i$ 的特征向量  
+若 $\boldsymbol{p_i}$ 是矩阵的特征向量，则 $k\boldsymbol{p_i}$ 也是矩阵的特征向量  
+* 若 $\lambda$ 是 $\boldsymbol{A}$ 的特征值，则 $\lambda^k$ 是 $\boldsymbol{A}^k$ 的特征值
+* 若 $\lambda$ 是 $\boldsymbol{A}$ 的特征值，则 $\varphi(\lambda)$ 是 $\varphi(\boldsymbol{A})$ 的特征值  
+### 定理2 设 $\lambda_1,\lambda_2,\cdots,\lambda_m$ 是方阵 $\boldsymbol{A}$ 的 $m$ 个特征值，$\boldsymbol{p_1},\boldsymbol{p_2},\cdots,\boldsymbol{p_n}$ 依次是与之对应的特征向量，如果 $\lambda_1,\lambda_2,\cdots,\lambda_m$ 各不相等，则 $\boldsymbol{p_1},\boldsymbol{p_2},\cdots,\boldsymbol{p_n}$ 线性无关  
+### 推论 设 $\lambda_1,\lambda_2$ 分别是方阵 $\boldsymbol{A}$ 的两个不同的特征值，$\xi_1,\xi_2,\cdots,\xi_s$ 和 $\eta_1,\eta_2,\cdots,\eta_r$ 分别是对应于 $\lambda_1$ 和 $\lambda_2$ 的线性无关的特征向量，则 $\xi_1,\xi_2,\cdots,\xi_s,\eta_1,\eta_2,\cdots,\eta_r$ 线性无关
