@@ -1435,3 +1435,54 @@ $$
 * 若 $\lambda$ 是 $\boldsymbol{A}$ 的特征值，则 $\varphi(\lambda)$ 是 $\varphi(\boldsymbol{A})$ 的特征值  
 ### 定理2 设 $\lambda_1,\lambda_2,\cdots,\lambda_m$ 是方阵 $\boldsymbol{A}$ 的 $m$ 个特征值，$\boldsymbol{p_1},\boldsymbol{p_2},\cdots,\boldsymbol{p_n}$ 依次是与之对应的特征向量，如果 $\lambda_1,\lambda_2,\cdots,\lambda_m$ 各不相等，则 $\boldsymbol{p_1},\boldsymbol{p_2},\cdots,\boldsymbol{p_n}$ 线性无关  
 ### 推论 设 $\lambda_1,\lambda_2$ 分别是方阵 $\boldsymbol{A}$ 的两个不同的特征值，$\xi_1,\xi_2,\cdots,\xi_s$ 和 $\eta_1,\eta_2,\cdots,\eta_r$ 分别是对应于 $\lambda_1$ 和 $\lambda_2$ 的线性无关的特征向量，则 $\xi_1,\xi_2,\cdots,\xi_s,\eta_1,\eta_2,\cdots,\eta_r$ 线性无关
+## 3、相似矩阵
+### 定义7 设 $\boldsymbol{A},\boldsymbol{B}$ 都是 $n$ 阶矩阵，若有可逆矩阵 $\boldsymbol{P}$，使得
+$$
+\boldsymbol{P}^{-1}\boldsymbol{AP} = \boldsymbol{B}
+$$
+### 则称 $\boldsymbol{B}$ 是 $\boldsymbol{A}$ 的相似矩阵，或者说 $\boldsymbol{A}$ 与 $\boldsymbol{B}$ 相似，对 $\boldsymbol{A}$ 进行运算 $\boldsymbol{P}^{-1}\boldsymbol{AP}$ 称为对 $\boldsymbol{A}$ 进行相似变换，可逆矩阵 $\boldsymbol{P}$ 称为把 $\boldsymbol{A}$ 变成 $\boldsymbol{B}$ 的相似变换矩阵  
+### 定理3 若 $n$ 阶矩阵 $\boldsymbol{A}$ 与 $\boldsymbol{B}$ 相似，则 $\boldsymbol{A}$ 与 $\boldsymbol{B}$ 的特征多项式相同，从而 $\boldsymbol{A}$ 与 $\boldsymbol{B}$ 的特征值亦相同  
+根据上一节，求矩阵 $\boldsymbol{B}$ 的特征值
+$$
+\begin{vmatrix}
+\boldsymbol{B}-\lambda\boldsymbol{I}
+\end{vmatrix}=
+\begin{vmatrix}
+\boldsymbol{P^{-1}AP}-\lambda\boldsymbol{I}
+\end{vmatrix}=
+\begin{vmatrix}
+\boldsymbol{P^{-1}AP}-\boldsymbol{P^{-1}}\lambda\boldsymbol{IP}
+\end{vmatrix}=
+\begin{vmatrix}
+\boldsymbol{P^{-1}}(\boldsymbol{A}-\lambda\boldsymbol{I})\boldsymbol{P}
+\end{vmatrix}
+$$
+$$
+\begin{vmatrix}
+\boldsymbol{P^{-1}}(\boldsymbol{A}-\lambda\boldsymbol{I})\boldsymbol{P}
+\end{vmatrix} = 
+\begin{vmatrix}
+\boldsymbol{P^{-1}}
+\end{vmatrix}
+\begin{vmatrix}
+\boldsymbol{A}-\lambda\boldsymbol{I}
+\end{vmatrix}
+\begin{vmatrix}
+\boldsymbol{P}
+\end{vmatrix}=
+\begin{vmatrix}
+\boldsymbol{A}-\lambda\boldsymbol{I}
+\end{vmatrix}
+$$
+### 推论 若 $n$ 阶矩阵 $\boldsymbol{A}$ 与对角矩阵 $\Lambda$ 相似，则 $\lambda_1,\lambda_2,\cdots,\lambda_n$ 是 $\boldsymbol{A}$ 的 $n$ 个特征值
+$$
+\boldsymbol{\Lambda} = 
+\begin{pmatrix}
+\lambda_1 &&&\\
+& \lambda_2 &&\\
+&& \ddots &\\
+&&& \lambda_n
+\end{pmatrix}
+$$
+### 定理4  $n$ 阶矩阵 $\boldsymbol{A}$ 与对角矩阵相似(即 $\boldsymbol{A}$ 能对角化)的充分必要条件是 $\boldsymbol{A}$ 有 $n$ 个线性无关的特征向量
+### 推论 如果 $n$ 阶矩阵 $\boldsymbol{A}$ 的 $n$ 个特征值互不相等，则 $\boldsymbol{A}$ 与对角矩阵相似
