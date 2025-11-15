@@ -1486,3 +1486,170 @@ $$
 $$
 ### 定理4  $n$ 阶矩阵 $\boldsymbol{A}$ 与对角矩阵相似(即 $\boldsymbol{A}$ 能对角化)的充分必要条件是 $\boldsymbol{A}$ 有 $n$ 个线性无关的特征向量
 ### 推论 如果 $n$ 阶矩阵 $\boldsymbol{A}$ 的 $n$ 个特征值互不相等，则 $\boldsymbol{A}$ 与对角矩阵相似
+## 4、对称矩阵的对角化
+两个关于对称矩阵的特征值和特征向量的性质
+### 性质1 对称矩阵的特征值为实数  
+### 性质2 设 $\lambda_1,\lambda_2$ 是对称矩阵 $\boldsymbol{A}$ 的两个特征值，$\boldsymbol{p_1},\boldsymbol{p_2}$ 是对应的特征向量，若 $\lambda_1 \ne \lambda_2$，则 $\boldsymbol{p_1}$ 与 $\boldsymbol{p_2}$ 正交
+### 定理5 设 $\boldsymbol{A}$ 为 $n$ 阶对称矩阵，则必有正交矩阵 $\boldsymbol{P}$，使 $\boldsymbol{P^{-1}AP} = \boldsymbol{P^TAP} = \boldsymbol{\Lambda}$ 其中，$\boldsymbol{\Lambda}$ 是以 $\boldsymbol{A}$ 的 $n$ 个特征值为对角元的对角矩阵
+### 推论 设 $\boldsymbol{A}$ 是 $n$ 阶对称矩阵，$\lambda$ 是 $\boldsymbol{A}$ 的特征方程的 $k$ 重根，则矩阵 $\boldsymbol{A}-\lambda\boldsymbol{I}$ 的秩 $R(\boldsymbol{A}-\lambda\boldsymbol{I}) = n-k$，从而对应特征值 $\lambda$ 恰有 $k$ 个线性无关的特征向量
+## 5、二次型及其标准形
+### 定义8 二次型
+含有 $n$ 个变量 $x_1,x_2,\cdots,x_n$ 的二次齐次函数  
+$$
+f(x_1,x_2,\cdots,x_n) = a_{11}x_1^2+a_{22}x_2^2+\cdots+a_{nn}x_n^2+2a_{12}x_1x_2+2a_{13}x_1x_3+\cdots+2a_{n-1,n}x_{n-1}x_n
+$$
+称为二次型  
+当 $j>i$ 时，取 $a_{ij} = a{ji}$ 则 $2a_{ij}x_ix_j = a_{ij}x_ix_j+a_{ji}x_jx_i$，所以
+$$
+f(x_1,x_2,\cdots,x_n) = \sum_{i,j=1}^na_{ij}x_ix_j
+$$
+如果能够寻求一个可逆的线性变换
+$$
+\begin{cases}
+x_1 = c_{11}y_1+c_{12}y_2+\cdots+c_{1n}y_n \\
+x_1 = c_{21}y_1+c_{22}y_2+\cdots+c_{2n}y_n \\
+\cdots \ \cdots \ \cdots\\
+x_1 = c_{n1}y_1+c_{n2}y_2+\cdots+c_{nn}y_n \\
+\end{cases}
+$$
+使得二次型只含有平方项，也就是能够使得
+$$
+f(x_1,x_2,\cdots,x_n) = f(y_1,y_2,\cdots,y_n) = k_1y_1^2+k_2y_2^2+\cdots+k_ny_n^2
+$$
+这种只含有平方项的二次型，称为二次型的标准形(法式)  
+如果过标准形的系数 $k_1,k_2,\cdots,k_n$ 只在 $-1,0,1$ 三个数中取值，则称为二次型的规范形  
+利用矩阵可以将二次型进一步表示为  
+$$
+f = \sum_{i,j=1}^na_{ij}x_ix_j
+$$
+$$
+\begin{align*}
+f = x_1(a_{11}x_1+a_{12}x_2+\cdots+a_{1n}x_n)+\\
+x_2(a_{21}x_1+a_{22}x_2+\cdots+a_{2n}x_n)+\\
+\cdots+\\
+x_n(a_{n1}x_1+a_{n2}x_2+\cdots+a_{nn}x_n)
+\end{align*}
+$$
+$$
+f = (x_1,x_2,\cdots,x_n)
+\begin{pmatrix}
+a_{11} & a_{12} & \cdots & a_{1n} \\
+a_{21} & a_{22} & \cdots & a_{2n} \\
+\vdots & \vdots &        & \vdots \\
+a_{n1} & a_{n2} & \cdots & a_{nn} \\
+\end{pmatrix}
+\begin{pmatrix}
+x_1 \\
+x_2 \\
+\vdots \\
+x_n
+\end{pmatrix}
+$$
+记
+$$
+\boldsymbol{A} = 
+\begin{pmatrix}
+a_{11} & a_{12} & \cdots & a_{1n} \\
+a_{21} & a_{22} & \cdots & a_{2n} \\
+\vdots & \vdots &        & \vdots \\
+a_{n1} & a_{n2} & \cdots & a_{nn} \\
+\end{pmatrix},
+x = 
+\begin{pmatrix}
+x_1 \\
+x_2 \\
+\vdots \\
+x_n
+\end{pmatrix}
+$$
+则有
+$$
+f = \boldsymbol{x^TAx}
+$$
+其中 $\boldsymbol{A}$ 为对称矩阵  
+任给一个二次型，就惟一确定一个对称矩阵；反之，任给一个对称矩阵，惟一确定一个二次型，两者之间一一对应   
+因此，将对称矩阵 $\boldsymbol{A}$ 叫做二次型 $f$ 的矩阵，将 $f$ 叫做对称矩阵 $\boldsymbol{A}$ 的二次型，对称矩阵 $\boldsymbol{A}$ 的秩叫做二次型 $f$ 的秩  
+当存在可逆的线性变换 $\boldsymbol{C}=(c_{ij})$ 时
+$$
+\boldsymbol{x=Cy}
+$$
+则有
+$$
+f = \boldsymbol{x^TAx} = (\boldsymbol{Cy})^T\boldsymbol{A}\boldsymbol{Cy} = 
+\boldsymbol{y^T}(\boldsymbol{C^TAC})\boldsymbol{y}
+$$
+### 定义9 设 $\boldsymbol{A}$ 和 $\boldsymbol{B}$ 是 $n$ 阶矩阵，若有可逆矩阵 $\boldsymbol{C}$ 使得 $\boldsymbol{B} = \boldsymbol{C^TAC}$ 则称矩阵 $\boldsymbol{A}$ 与 $\boldsymbol{B}$ 合同
+若 $\boldsymbol{A}$ 为对称矩阵，则 $\boldsymbol{B} = \boldsymbol{C^TAC}$ 也为对称矩阵，且 $R(\boldsymbol{B}) = R(\boldsymbol{A})$  
+$\boldsymbol{B}$ 为对称阵
+$$
+\boldsymbol{B}^T = (\boldsymbol{C^TAC})^T = 
+\boldsymbol{C}^T\boldsymbol{A}^T\boldsymbol{C} = 
+\boldsymbol{C^TAC} = \boldsymbol{B}
+$$
+又因为矩阵 $\boldsymbol{C}$ 可逆，满秩，所以
+$$
+R(\boldsymbol{B}) = R(\boldsymbol{A})
+$$
+由此可知，经过可逆变换 $\boldsymbol{x = Cy}$ 后，二次型 $f$ 的矩阵由 $\boldsymbol{A}$ 变成了 $\boldsymbol{A}$ 的合同矩阵 $\boldsymbol{C^TAC}$，且二次型的秩不变  
+要使二次型 $f$ 经过可逆变换 $\boldsymbol{x = Cy}$ 变成标准形，也就是要令  
+$$
+\boldsymbol{y^TC^TACy} = k_1y_1^2+k_2y_2^2+\cdots+k_ny_n^2 = 
+(y_1,y_2,\cdots,y_n)
+\begin{pmatrix}
+k_1 &&& \\
+& k_2 && \\
+&& \ddots & \\
+&&& k_n
+\end{pmatrix}
+\begin{pmatrix}
+y_1 \\
+y_2 \\
+\vdots \\
+y_n
+\end{pmatrix}
+$$
+也就是要使 $\boldsymbol{C^TAC}$ 成为对角矩阵，对于对称矩阵 $\boldsymbol{A}$，寻求可逆矩阵 $\boldsymbol{C}$，使 $\boldsymbol{C^TAC}$ 成为对角矩阵的过程，称为把对称矩阵 $\boldsymbol{A}$ 合同对角化  
+其实在上一节中，已经知道，任给对称矩阵 $\boldsymbol{A}$，总有正交矩阵 $\boldsymbol{P}$，使 $\boldsymbol{P^{-1}AP} = \boldsymbol{P^TAP} = \boldsymbol{\Lambda}$，可以直接应用于二次型矩阵的合同对角化  
+### 定理6 任给二次型 $f = \sum_{i,j=1}^na_{ij}x_ix_j$，总有正交变换 $\boldsymbol{x=Py}$，使 $f$ 化为下方标准形，其中 $\lambda_1,\lambda_2,\cdots,\lambda_n$ 是 $f$ 的矩阵 $\boldsymbol{A}=(a_{ij})$ 的特征值
+$$
+f =  \lambda_1y_1^2+\lambda_2y_2^2+\cdots+\lambda_ny_n^2
+$$
+### 推论 任给 $n$ 元二次型 $f(x) = \boldsymbol{x^TAx},(\boldsymbol{A^T} = \boldsymbol{A})$，总有可逆变换 $\boldsymbol{x=Cz}$，使 $f(Cz)$ 为规范形
+设二次型 $f$ 的秩为 $r$，特征值为 $\lambda_i$  
+因为二次型 $f$ 的矩阵 $\boldsymbol{A}$ 的秩为 $r$，且存在 $\boldsymbol{A}$ 的对角阵 $\boldsymbol{\Lambda}$，有
+$$
+R(\boldsymbol{A}) = R(\boldsymbol{\Lambda})
+$$
+所以，特征值 $\lambda_i$ 中恰有 $r$ 个不为 $0$，不妨设 $\lambda_1,\lambda_2,\cdots,\lambda_r$ 不为0，$\lambda_{r+1} = \cdots = \lambda_{n} = 0$  
+根据定理6，总有正交变换 $\boldsymbol{x=Py}$ 使得
+$$
+f(\boldsymbol{x}) = f(\boldsymbol{Py}) = \boldsymbol{y^TP^TAPy}
+$$
+$$
+\boldsymbol{P^TAP} = \boldsymbol{\Lambda} = 
+diag(\lambda_1,\cdots,\lambda_r,0,\cdots,0)
+$$
+我们构造一个矩阵 $\boldsymbol{K}$，令
+$$
+\boldsymbol{K} = diag(k_1,k_2,\cdots,k_n)
+$$
+其中
+$$
+k_i = 
+\begin{cases}
+\frac{1}{\sqrt{\lambda_i}} & , & i \le r \\
+1 & , & i > r
+\end{cases}
+$$
+则 $\boldsymbol{K}$ 可逆，令 $\boldsymbol{y=Kz}$  
+$$
+f(\boldsymbol{Py}) = f(\boldsymbol{PKz}) = \boldsymbol{z^TK^TP^TAPKz} = \boldsymbol{z^TK^T\Lambda Kz}
+$$
+其中
+$$
+\boldsymbol{K^T \Lambda K} = diag(\frac{\lambda_1}{|\lambda_1|},\cdots,\frac{\lambda_n}{|\lambda_n|},0,\cdots,0)
+$$
+记 $\boldsymbol{C} = \boldsymbol{PK}$，则有可逆变换 $\boldsymbol{x=Cz}$，使得二次型 $f$ 化为规范形
+$$
+f(\boldsymbol{Cz}) = \frac{\lambda_1}{|\lambda_1|}z_1^2+\cdots+\frac{\lambda_1}{|\lambda_1|}z_r^2
+$$
