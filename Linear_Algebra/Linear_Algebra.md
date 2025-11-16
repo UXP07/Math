@@ -1653,3 +1653,26 @@ $$
 $$
 f(\boldsymbol{Cz}) = \frac{\lambda_1}{|\lambda_1|}z_1^2+\cdots+\frac{\lambda_1}{|\lambda_1|}z_r^2
 $$
+## 6、正定二次型
+### 定理7 惯性定理
+设二次型 $f=\boldsymbol{x^TAx}$ 的秩为 $r$，且有两个可逆变换
+$$
+\boldsymbol{x = Cy},\boldsymbol{x = Pz}
+$$
+使得
+$$
+\begin{gather*}
+f = k_1y_1^2+k_2y_2^2+\cdots+k_ry_r^2  & (k_i \ne 0)
+\end{gather*}
+$$
+$$
+\begin{gather*}
+f = \lambda_1y_1^2+\lambda_2y_2^2+\cdots+\lambda_ry_r^2  & (\lambda_i \ne 0)
+\end{gather*}
+$$
+则 $k_1,\cdots,k_r$ 中正数的个数与 $\lambda_1,\cdots,\lambda_r$ 中正数的个数相等
+### 定义10 设二次型 $f = \boldsymbol{x^TAx}$，如果对任何 $\boldsymbol{x \ne 0}$，都有 $f(\boldsymbol{x})>0$，称为正定二次型，并称对称矩阵 $\boldsymbol{A}$ 是正定的；如果对任何 $\boldsymbol{x \ne 0}$，都有 $f(\boldsymbol{x})<0$，称为负定二次型，并称对称矩阵 $\boldsymbol{A}$ 是负定的
+### 定理8 $n$ 元二次型 $f = \boldsymbol{x^TAx}$ 为正定的充分必要条件是：它的标准形的 $n$ 个系数全为正，即它的规范形的 $n$ 个系数全为 $1$，也就是它的正惯性指数等于 $n$  
+### 推论 对称矩阵 $\boldsymbol{A}$ 为正定的充分必要条件是：$\boldsymbol{A}$ 的特征值全为正  
+### 定理9 对称矩阵 $\boldsymbol{A}$ 为正定的充分必要条件是：$\boldsymbol{A}$ 的各阶主子式都为正；对称矩阵 $\boldsymbol{A}$ 为负定的充分必要条件是：奇数阶主子式为负，而偶数阶主子式为正  
+这个定理称为赫尔维茨定理  
